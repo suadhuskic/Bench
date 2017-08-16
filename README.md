@@ -4,7 +4,7 @@
 ## Bench yo' time zones! 
 You shouldn't be scared of time zones and you shouldn't present `America/Los_Angeles` as an option to the user.
 
-Just to get your attention. Scroll down to get more details and documentation.
+Just to get your attention:; Scroll down to get more details and documentation.
 ```php
 
 use Bench\Bench;
@@ -26,7 +26,9 @@ foreach($us_time_zones as $tz) {
 }
 
 ```
-Above will out the following:
+The answer is YES. I do take Daylight/Standard into consideration. The abbreviations are generated after starting the Carbon instance using the `$time` you passed.
+
+The code above will output:
 ```php
 
 // America/Adak
