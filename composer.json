@@ -1,0 +1,23 @@
+{
+	"name": "suadhuskic/bench",
+    "description": "A new easy way to get time zones based on country.",
+    "license": "MIT",
+    "keywords": ["timezone"],
+    "authors": [
+        {
+            "name": "Suad Huskic",
+            "email": "suadhuskic1@gmail.com"
+        }
+    ],
+    "require": {
+        "nesbot/carbon": "^1.22"
+    },
+    "require-dev": {
+		"phpunit/phpunit": "^6.2"
+	},
+    "autoload": {
+        "psr-4": {
+            "Bench\\": "src/Bench/"
+        }
+    }
+}
