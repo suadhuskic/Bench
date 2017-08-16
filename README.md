@@ -1,245 +1,72 @@
 [Bench]
 ===========
 
-### Benching time zones ! You shouldn't be scared of time zones and you shouldnt present `America/Los_Angeles`  to the user neither. Yikes...that would of scared my co-worker.
+## Bench yo' time zones! 
+You shouldn't be scared of time zones and you shouldn't present `America/Los_Angeles` as an option to the user.
 
-
-Lets display a set of countries for that user to auto-complete on or simply select from.
-
-
-
-
-```php
-use Bench\Bench;
-
-//get all countries.
-$countries = Bench::getCountries();
-
-//we get this:
-//not time zones are lazy-loaded. when you call the getter we load them and cache them.
-print_r($countries)
-// [0] => Bench\Country Object
-// 	(
-// 	    [code:protected] => TZ
-// 	    [name:protected] => Tanzania
-// 	    [timeZones:protected] => Array
-// 	        (
-// 	        )
-// 	
-// 	)
-// [1] => Bench\Country Object
-//     (
-//         [code:protected] => TH
-//         [name:protected] => Thailand
-//         [timeZones:protected] => Array
-//             (
-//             )
-// 
-//     )
-```
-
-## now lets get a specific country and get the time zones for that country.
+Just to get your attention. Scroll down to get more details and documentation.
 ```php
 
 use Bench\Bench;
-
-$country = Bench::getCountries('US');
-
-//last arg is to only return unqiue offsets with in those countries.
-print_r($country->getTimezones('now', true));
-// Array
-// (
-//     [0] => Bench\TimeZone Object
-//         (
-//             [carbon:protected] => Carbon\Carbon Object
-//                 (
-//                     [date] => 2017-08-16 13:29:23.331822
-//                     [timezone_type] => 3
-//                     [timezone] => America/Adak
-//                 )
-// 
-//             [shortAbbr:protected] => HDT
-//             [longAbbr:protected] => Hawaii-Aleutian Daylight Time
-//         )
-// 
-//     [1] => Bench\TimeZone Object
-//         (
-//             [carbon:protected] => Carbon\Carbon Object
-//                 (
-//                     [date] => 2017-08-16 14:29:23.332176
-//                     [timezone_type] => 3
-//                     [timezone] => America/Anchorage
-//                 )
-// 
-//             [shortAbbr:protected] => AKDT
-//             [longAbbr:protected] => Alaska Daylight Time
-//         )
-// 
-//     [2] => Bench\TimeZone Object
-//         (
-//             [carbon:protected] => Carbon\Carbon Object
-//                 (
-//                     [date] => 2017-08-16 16:29:23.332473
-//                     [timezone_type] => 3
-//                     [timezone] => America/Boise
-//                 )
-// 
-//             [shortAbbr:protected] => MDT
-//             [longAbbr:protected] => Mountain Daylight Time
-//         )
-// 
-//     [3] => Bench\TimeZone Object
-//         (
-//             [carbon:protected] => Carbon\Carbon Object
-//                 (
-//                     [date] => 2017-08-16 17:29:23.332771
-//                     [timezone_type] => 3
-//                     [timezone] => America/Chicago
-//                 )
-// 
-//             [shortAbbr:protected] => CDT
-//             [longAbbr:protected] => Central Daylight Time
-//         )
-// 
-//     [4] => Bench\TimeZone Object
-//         (
-//             [carbon:protected] => Carbon\Carbon Object
-//                 (
-//                     [date] => 2017-08-16 18:29:23.333074
-//                     [timezone_type] => 3
-//                     [timezone] => America/Detroit
-//                 )
-// 
-//             [shortAbbr:protected] => EDT
-//             [longAbbr:protected] => Eastern Daylight Time
-//         )
-// 
-//     [5] => Bench\TimeZone Object
-//         (
-//             [carbon:protected] => Carbon\Carbon Object
-//                 (
-//                     [date] => 2017-08-16 15:29:23.333459
-//                     [timezone_type] => 3
-//                     [timezone] => America/Los_Angeles
-//                 )
-// 
-//             [shortAbbr:protected] => PDT
-//             [longAbbr:protected] => Pacific Daylight Time
-//         )
-// 
-//     [6] => Bench\TimeZone Object
-//         (
-//             [carbon:protected] => Carbon\Carbon Object
-//                 (
-//                     [date] => 2017-08-16 12:29:23.333879
-//                     [timezone_type] => 3
-//                     [timezone] => Pacific/Honolulu
-//                 )
-// 
-//             [shortAbbr:protected] => HST
-//             [longAbbr:protected] => Hawaii Standard Time
-//         )
-// 
-// )
-```
-
-## Or we could of actually just done this:
-```php
-
+	
+//get all the countries in the united states.
+//A two-letter ISO 3166-1 compatible country code.
 $us_time_zones = Bench::getTimezones('US', 'now', true);
-print_r($us_time_zones);
-// Array
-// (
-//     [0] => Bench\TimeZone Object
-//         (
-//             [carbon:protected] => Carbon\Carbon Object
-//                 (
-//                     [date] => 2017-08-16 13:31:34.267558
-//                     [timezone_type] => 3
-//                     [timezone] => America/Adak
-//                 )
-// 
-//             [shortAbbr:protected] => HDT
-//             [longAbbr:protected] => Hawaii-Aleutian Daylight Time
-//         )
-// 
-//     [1] => Bench\TimeZone Object
-//         (
-//             [carbon:protected] => Carbon\Carbon Object
-//                 (
-//                     [date] => 2017-08-16 14:31:34.267905
-//                     [timezone_type] => 3
-//                     [timezone] => America/Anchorage
-//                 )
-// 
-//             [shortAbbr:protected] => AKDT
-//             [longAbbr:protected] => Alaska Daylight Time
-//         )
-// 
-//     [2] => Bench\TimeZone Object
-//         (
-//             [carbon:protected] => Carbon\Carbon Object
-//                 (
-//                     [date] => 2017-08-16 16:31:34.268201
-//                     [timezone_type] => 3
-//                     [timezone] => America/Boise
-//                 )
-// 
-//             [shortAbbr:protected] => MDT
-//             [longAbbr:protected] => Mountain Daylight Time
-//         )
-// 
-//     [3] => Bench\TimeZone Object
-//         (
-//             [carbon:protected] => Carbon\Carbon Object
-//                 (
-//                     [date] => 2017-08-16 17:31:34.268492
-//                     [timezone_type] => 3
-//                     [timezone] => America/Chicago
-//                 )
-// 
-//             [shortAbbr:protected] => CDT
-//             [longAbbr:protected] => Central Daylight Time
-//         )
-// 
-//     [4] => Bench\TimeZone Object
-//         (
-//             [carbon:protected] => Carbon\Carbon Object
-//                 (
-//                     [date] => 2017-08-16 18:31:34.268810
-//                     [timezone_type] => 3
-//                     [timezone] => America/Detroit
-//                 )
-// 
-//             [shortAbbr:protected] => EDT
-//             [longAbbr:protected] => Eastern Daylight Time
-//         )
-// 
-//     [5] => Bench\TimeZone Object
-//         (
-//             [carbon:protected] => Carbon\Carbon Object
-//                 (
-//                     [date] => 2017-08-16 15:31:34.269195
-//                     [timezone_type] => 3
-//                     [timezone] => America/Los_Angeles
-//                 )
-// 
-//             [shortAbbr:protected] => PDT
-//             [longAbbr:protected] => Pacific Daylight Time
-//         )
-// 
-//     [6] => Bench\TimeZone Object
-//         (
-//             [carbon:protected] => Carbon\Carbon Object
-//                 (
-//                     [date] => 2017-08-16 12:31:34.269571
-//                     [timezone_type] => 3
-//                     [timezone] => Pacific/Honolulu
-//                 )
-// 
-//             [shortAbbr:protected] => HST
-//             [longAbbr:protected] => Hawaii Standard Time
-//         )
-// 
-// )       
+
+foreach($us_time_zones as $tz) {
+	echo $tz->getName()."\n";
+	echo $tz->getShortAbbr()."\n";
+	echo $tz->getLongAbbr()."\n";
+	echo $tz->getOffset()."\n";
+	echo $tz."\n";
+	echo "----------------------------\n";
+
+}
+
 ```
+Above will out the following:
+`
+America/Adak
+HDT
+Hawaii-Aleutian Daylight Time
+-09:00
+(GMT -09:00) Hawaii-Aleutian Daylight Time
+----------------------------
+America/Anchorage
+AKDT
+Alaska Daylight Time
+-08:00
+(GMT -08:00) Alaska Daylight Time
+----------------------------
+America/Boise
+MDT
+Mountain Daylight Time
+-06:00
+(GMT -06:00) Mountain Daylight Time
+----------------------------
+America/Chicago
+CDT
+Central Daylight Time
+-05:00
+(GMT -05:00) Central Daylight Time
+----------------------------
+America/Detroit
+EDT
+Eastern Daylight Time
+-04:00
+(GMT -04:00) Eastern Daylight Time
+----------------------------
+America/Los_Angeles
+PDT
+Pacific Daylight Time
+-07:00
+(GMT -07:00) Pacific Daylight Time
+----------------------------
+Pacific/Honolulu
+HST
+Hawaii Standard Time
+-10:00
+(GMT -10:00) Hawaii Standard Time
+----------------------------
+
+`
