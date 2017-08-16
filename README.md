@@ -4,7 +4,7 @@
 ## Bench yo' time zones! 
 You shouldn't be scared of time zones and you shouldn't present `America/Los_Angeles` as an option to the user.
 
-Just to get your attention:; Scroll down to get more details and documentation.
+Just to get your attention, heres an example:
 ```php
 
 use Bench\Bench;
@@ -75,3 +75,119 @@ The code above will output:
 // ----------------------------
 
 ```
+
+## Installation
+
+### With Composer
+
+```
+$ composer require suadhuskic/bench
+```
+
+```json
+{
+    "require": {
+        "suadhuskic/bench": ""
+    }
+}
+```
+
+
+Before you send a big list of countries to the user; give them a list of countries to select from. This will help narrow the results down.
+```php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Bench\Bench;
+
+//get the countries. time zones are lazy-loaded per country. they dont get loaded until you call the getter the first time.
+$countries = Bench::getCountries();
+print_r($countries[0]);
+
+// Bench\Country Object
+// (
+//     [code:protected] => AF
+//     [name:protected] => Afghanistan
+//     [timeZones:protected] => Array
+//         (
+//         )
+// 
+// )
+
+//or get a specific country. don't forget timezones are lazy-loaded.
+$country = Bench::getCountries('FR');
+print_r($country);
+// Bench\Country Object
+// (
+//     [code:protected] => FR
+//     [name:protected] => France
+//     [timeZones:protected] => Array
+//         (
+//         )
+// 
+// )
+
+print_r($country->getTimezones());
+// Array
+// (
+//     [0] => Bench\TimeZone Object
+//         (
+//             [carbon:protected] => Carbon\Carbon Object
+//                 (
+//                     [date] => 2017-08-17 01:42:33.593773
+//                     [timezone_type] => 3
+//                     [timezone] => Europe/Paris
+//                 )
+// 
+//             [shortAbbr:protected] => CEST
+//             [longAbbr:protected] => Central European Summer Time
+//         )
+// 
+// )
+
+
+```
+getters for `Bench\Country`:
+ - `getCode` - A two-letter ISO 3166-1 compatible country code.
+ - `getName` - the full country name
+ - `getTimezones(string $time='now', bool $unqiueOffsets=false)` - get all time zones.
+ 
+ 
+ ---
+ 
+ We want to use Bench\Bench as the factory. Getting a `Bench\TimeZone` instance:
+
+ ```php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Bench\Bench;
+
+$timezone = Bench::createTimeZone('now', 'America/Los_Angeles');
+
+print_r($timezone);
+// Bench\TimeZone Object
+// (
+//     [carbon:protected] => Carbon\Carbon Object
+//         (
+//             [date] => 2017-08-16 16:46:18.410848
+//             [timezone_type] => 3
+//             [timezone] => America/Los_Angeles
+//         )
+// 
+//     [shortAbbr:protected] => PDT
+//     [longAbbr:protected] => Pacific Daylight Time
+// ) 
+ 
+ ```
+ getters for `Bench\TimeZone`:
+ - `getName` - America/Los_Angeles
+ - `getShortAbbr` - PDT
+ - `getLongAbbr` - Pacific Daylight Time
+ - `getLongAbbrWithGMTOffset` - (GMT -07:00) Pacific Daylight Time
+ - `getOffset(string $type='human')` - human=-07:00, hours=-7, *=-25200
+ 
+ 
+ ---
+
+ 
