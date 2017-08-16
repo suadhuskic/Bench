@@ -31,7 +31,7 @@ class TimeZone
 		} elseif($type == 'hours') {
 			return $this->carbon->offsetHours;
 		}
-		return $this->carbon->getOffSet($this->carbon);
+		return $this->carbon->getOffSet();
 	}
 
 	/**
