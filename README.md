@@ -10,7 +10,9 @@ Just to get your attention. Scroll down to get more details and documentation.
 use Bench\Bench;
 	
 //get all the countries in the united states.
-//A two-letter ISO 3166-1 compatible country code.
+//A two-letter ISO 3166-1 compatible country code,
+//the time to use when starting the instance. Carbon\Carbon will be used.
+//true/false - do you want unique offsets per country.
 $us_time_zones = Bench::getTimezones('US', 'now', true);
 
 foreach($us_time_zones as $tz) {
