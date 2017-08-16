@@ -23,7 +23,7 @@ class Bench
 	*/
 	public static function createTimeZone(string $time, $timeZoneName) 
 	{
-		return TimeZone::make(Carbon::parse($timeToUse, $timeZoneName));
+		return TimeZone::make(Carbon::parse($time, $timeZoneName));
 	}
 
 	/**
