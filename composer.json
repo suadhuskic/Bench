@@ -1,8 +1,18 @@
 {
 	"name": "suadhuskic/bench",
-    "description": "A new easy way to get time zones based on country.",
+    "description": "Easy way to present user friendly time zones.",
     "license": "MIT",
-    "keywords": ["timezone"],
+    "keywords": [
+    	"timezone",
+    	"countries",
+    	"DateTimeZone",
+    	"DateTime"
+    ],
+    "homepage": "https://github.com/suadhuskic/Bench",
+    "support": {
+        "issues": "https://github.com/suadhuskic/Bench/issues",
+        "source": "https://github.com/suadhuskic/Bench"
+    },
     "authors": [
         {
             "name": "Suad Huskic",
