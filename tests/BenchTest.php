@@ -18,8 +18,6 @@ class BenchTest extends Testcase
 
 		$instance = Bench::createTimeZone('now', $tz);
 
-		$this->assertInstanceOf(TimeZone::class, $instance);
-
 		$this->assertSame($tz, $instance->getName());
 
 	}
@@ -41,8 +39,6 @@ class BenchTest extends Testcase
 		$country_code = 'US';
 
 		$country = Bench::getCountries($country_code);
-
-		$this->assertInstanceOf(Country::class, $country);
 
 		$this->assertSame($country_code, $country->getCode());
 	}
