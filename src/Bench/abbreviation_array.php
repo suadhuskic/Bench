@@ -80,6 +80,12 @@ return array(
 	    	"Offst" => -9,
             "Name" => "Hawaii-Aleutian Daylight Time"
     	),
+    "ULAT" => array
+    	(
+	    	"Offst" => +8,
+            "Name" => "Ulaanbaatar Time (Standard Time)"
+	    	
+    	),
     "AKDT" => array
         (
             "Offset" => -8,
