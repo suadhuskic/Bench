@@ -75,6 +75,11 @@ return array(
             "Offset" => -9,
             "Name" => "Hawaii-Aleutian Daylight Time"
         ),
+    "HADT" => array
+    	(
+	    	"Offst" => -9,
+            "Name" => "Hawaii-Aleutian Daylight Time"
+    	),
     "AKDT" => array
         (
             "Offset" => -8,
