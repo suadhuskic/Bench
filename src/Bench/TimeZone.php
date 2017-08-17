@@ -24,7 +24,7 @@ class TimeZone
 	*
 	* @return string
 	*/
-	public function getOffset(string $type='human')
+	public function getOffset($type='human')
 	{
 		if($type == 'human') {
 			return self::createHumanOffset($this->carbon);
@@ -75,7 +75,7 @@ class TimeZone
 	*
 	* @return $this;	
 	*/
-	public function setShortAbbr(string $newData) 
+	public function setShortAbbr($newData) 
 	{
 		$this->shortAbbr = $newData;
 
@@ -100,7 +100,7 @@ class TimeZone
 	*
 	* @return $this;	
 	*/
-	public function setLongAbbr(string $newData)
+	public function setLongAbbr($newData)
 	{
 		$this->longAbbr = $newData;
 
@@ -191,7 +191,7 @@ class TimeZone
 	*
 	* @return array
 	*/
-	public static function all(string $time, $unqiueOffsetPerCountry) 
+	public static function all($time, $unqiueOffsetPerCountry) 
 	{
 		return self::createObjects(DateTimeZone::listIdentifiers(), $time, $unqiueOffsetPerCountry);
 	}
@@ -205,7 +205,7 @@ class TimeZone
 	*
 	* @return array
 	*/
-	public static function getByCountryCode(string $countryCode, string $time, $unqiueOffsetPerCountry) 
+	public static function getByCountryCode($countryCode, $time, $unqiueOffsetPerCountry) 
 	{
 		return self::createObjects(DateTimeZone::listIdentifiers(DateTimeZone::PER_COUNTRY, $countryCode), $time, $unqiueOffsetPerCountry, $countryCode);
 	}
@@ -220,7 +220,7 @@ class TimeZone
 	*
 	* @return array
 	*/
-	protected static function createObjects(array $timezones, string $time, $unqiueOffsetPerCountry, string $countryCode=null) 
+	protected static function createObjects(array $timezones, $time, $unqiueOffsetPerCountry, $countryCode=null) 
 	{
 		//create DateTimeZone objects for every time zone we got.
 		//we need to get the location for each one incase they want unqiue offsets per country.
@@ -268,7 +268,7 @@ class TimeZone
 	*
 	* @return array
 	*/
-	protected static function createDateTimeZones(array $timezones, string $countryCode=null) 
+	protected static function createDateTimeZones(array $timezones, $countryCode=null) 
 	{
 		$return = [];
 		foreach($timezones as $tz) {

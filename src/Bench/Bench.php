@@ -21,7 +21,7 @@ class Bench
 	*
 	* @return object Bench\TimeZone
 	*/
-	public static function createTimeZone(string $time, $timeZoneName) 
+	public static function createTimeZone($time, $timeZoneName) 
 	{
 		return TimeZone::make(Carbon::parse($time, $timeZoneName));
 	}
@@ -33,7 +33,7 @@ class Bench
 	*
 	* @return array|Bench\Country
 	*/
-	public static function getCountries(string $countryCode=null) 
+	public static function getCountries($countryCode=null) 
 	{
 		return CountryCode::get($countryCode);
 	}
@@ -47,7 +47,7 @@ class Bench
 	*
 	* @return array
 	*/
-	public static function getTimezones(string $countryCode=null, string $time="now", $unqiueOffsetPerCountry=false)
+	public static function getTimezones($countryCode=null, $time="now", $unqiueOffsetPerCountry=false)
 	{
 		if(strlen($countryCode) > 0) {
 

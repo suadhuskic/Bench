@@ -45,7 +45,7 @@ class Country
 	*
 	* @return array
 	*/
-	public function getTimezones(string $time='now', $unqiueOffsets=false)
+	public function getTimezones($time='now', $unqiueOffsets=false)
 	{
 		if(!count($this->timeZones)) {
 			$this->timeZones = Bench::getTimezones($this->code, $time, $unqiueOffsets);
@@ -59,7 +59,7 @@ class Country
 	* @param string $code
 	* @param string $name
 	*/
-	public function __construct(string $code, string $name)
+	public function __construct(string $code, $name)
 	{
 		$this->code = $code;
 		$this->name = $name;

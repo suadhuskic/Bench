@@ -11,7 +11,7 @@ class CountryCode
 	*
 	* @return array
 	*/
-	public static function get(string $countryCode=null)
+	public static function get($countryCode=null)
 	{
 		$return = [];
 
