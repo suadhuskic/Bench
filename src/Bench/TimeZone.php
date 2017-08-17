@@ -191,7 +191,7 @@ class TimeZone
 	*
 	* @return array
 	*/
-	public static function all(string $time, bool $unqiueOffsetPerCountry) 
+	public static function all(string $time, $unqiueOffsetPerCountry) 
 	{
 		return self::createObjects(DateTimeZone::listIdentifiers(), $time, $unqiueOffsetPerCountry);
 	}
@@ -205,7 +205,7 @@ class TimeZone
 	*
 	* @return array
 	*/
-	public static function getByCountryCode(string $countryCode, string $time, bool $unqiueOffsetPerCountry) 
+	public static function getByCountryCode(string $countryCode, string $time, $unqiueOffsetPerCountry) 
 	{
 		return self::createObjects(DateTimeZone::listIdentifiers(DateTimeZone::PER_COUNTRY, $countryCode), $time, $unqiueOffsetPerCountry, $countryCode);
 	}
@@ -215,12 +215,12 @@ class TimeZone
 	*
 	* @param array $timezones - containg the strings
 	* @param string $time - the time to use to start our DateTime instance.
-	* @param bool $unqiueOffsetPerCountry
+	* @param $unqiueOffsetPerCountry
 	* @oaran string $countryCode - if this is set; we dont have to check if the country is valid when checking to see if its supported or not.
 	*
 	* @return array
 	*/
-	protected static function createObjects(array $timezones, string $time, bool $unqiueOffsetPerCountry, string $countryCode=null) 
+	protected static function createObjects(array $timezones, string $time, $unqiueOffsetPerCountry, string $countryCode=null) 
 	{
 		//create DateTimeZone objects for every time zone we got.
 		//we need to get the location for each one incase they want unqiue offsets per country.

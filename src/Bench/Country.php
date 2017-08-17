@@ -45,7 +45,7 @@ class Country
 	*
 	* @return array
 	*/
-	public function getTimezones(string $time='now', bool $unqiueOffsets=false)
+	public function getTimezones(string $time='now', $unqiueOffsets=false)
 	{
 		if(!count($this->timeZones)) {
 			$this->timeZones = Bench::getTimezones($this->code, $time, $unqiueOffsets);

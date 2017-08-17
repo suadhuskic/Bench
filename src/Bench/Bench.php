@@ -47,7 +47,7 @@ class Bench
 	*
 	* @return array
 	*/
-	public static function getTimezones(string $countryCode=null, string $time="now", bool $unqiueOffsetPerCountry=false)
+	public static function getTimezones(string $countryCode=null, string $time="now", $unqiueOffsetPerCountry=false)
 	{
 		if(strlen($countryCode) > 0) {
 
