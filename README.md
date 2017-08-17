@@ -6,6 +6,8 @@ You shouldn't be scared of time zones and you shouldn't present `America/Los_Ang
 
 Just to get your attention, heres an example:
 ```php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
 
 use Bench\Bench;
 	
@@ -83,8 +85,7 @@ The code above will output:
 ```
 $ composer require suadhuskic/bench
 ```
-
-Before you send a big list of countries to the user; give them a list of countries to select from. This will help narrow the results down.
+Getting an array of countries:
 ```php
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
@@ -104,8 +105,14 @@ print_r($countries[0]);
 //         )
 // 
 // )
+```
+Or get a specific country. don't forget timezones are lazy-loaded.
+```php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
 
-//or get a specific country. don't forget timezones are lazy-loaded.
+use Bench\Bench;
+
 $country = Bench::getCountries('FR');
 print_r($country);
 // Bench\Country Object
@@ -117,7 +124,9 @@ print_r($country);
 //         )
 // 
 // )
-
+```
+Now if you want the time zones for a country; call the getter:
+```php
 print_r($country->getTimezones());
 // Array
 // (
