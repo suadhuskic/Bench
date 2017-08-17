@@ -84,15 +84,6 @@ The code above will output:
 $ composer require suadhuskic/bench
 ```
 
-```json
-{
-    "require": {
-        "suadhuskic/bench": ""
-    }
-}
-```
-
-
 Before you send a big list of countries to the user; give them a list of countries to select from. This will help narrow the results down.
 ```php
 <?php
