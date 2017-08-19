@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/suadhuskic/Bench.svg?branch=master)](https://travis-ci.org/suadhuskic/Bench)
+
 [Bench]
 ===========
 
