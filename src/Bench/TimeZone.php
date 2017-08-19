@@ -144,13 +144,6 @@ class TimeZone
 	    //well for some time zones, PHP returns the offset (hours) as the abbrivation.
 	    //for this instance abbreviation_array will hold the timezone name as the index.
 	    $shortAbbr = $carbon->format('T');
-	    
-	    if($carbon->timezone->getName() == "America/Araguaina") {
-		    
-		    print $shortAbbr."\n";
-		    print_r($carbon->timezone->getTransitions());
-		    exit;
-	    }
 
 	    //now we need to get our long abbr.
 	    //first try using just the short abbr
