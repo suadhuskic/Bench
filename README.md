@@ -2,8 +2,7 @@
 
 [Bench]
 ===========
-
-## Bench yo' time zones! 
+Bench is a PHP library that helps you present user friendly time zones without having a database.
 You shouldn't be scared of time zones and you shouldn't present `America/Los_Angeles` as an option to the user.
 
 Just to get your attention, heres an example:
