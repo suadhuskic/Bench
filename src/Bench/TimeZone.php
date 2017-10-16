@@ -137,12 +137,11 @@ class TimeZone
 	*/
 	public static function make(Carbon $carbon)
 	{
-		//contains the full abbreviation for all time zones.
-		$abbreviation_array = require __DIR__ . '/abbreviation_array.php';
+		$abbreviation_array = Bench::getAbbreviations();
 
-	    //EST, CST
-	    //well for some time zones, PHP returns the offset (hours) as the abbrivation.
-	    //for this instance abbreviation_array will hold the timezone name as the index.
+	    // EST, CST
+	    // well for some time zones, PHP returns the offset (hours) as the abbrivation.
+	    // for this instance abbreviation_array will hold the timezone name as the index.
 	    $shortAbbr = $carbon->format('T');
 
 	    //now we need to get our long abbr.
@@ -166,14 +165,8 @@ class TimeZone
 	    		$fullAbbr = $abbreviation_array[$carbon->timezone->getName()]['Name'];
 
 	    	} else {
-
-		    	throw new TimeZoneAbbreviationNotFound(
-		    		sprintf("Could not find full time zone abbreviation for timezone: '%s'. We tried: '%s', '%s'",
-		    				$carbon->timezone->getName(),
-		    				$shortAbbr, 
-		    				$short_offset_key
-		    		)
-		    	);
+	    		//leave the short as is and set full to the time zone name since we dont have a record for it.
+	    		$fullAbbr = $carbon->timezone->getName();
 		    }
 	    }
 
@@ -207,7 +200,12 @@ class TimeZone
 	*/
 	public static function getByCountryCode($countryCode, $time, $unqiueOffsetPerCountry) 
 	{
-		return self::createObjects(DateTimeZone::listIdentifiers(DateTimeZone::PER_COUNTRY, $countryCode), $time, $unqiueOffsetPerCountry, $countryCode);
+		return self::createObjects(
+			DateTimeZone::listIdentifiers(DateTimeZone::PER_COUNTRY, $countryCode),
+			$time,
+			$unqiueOffsetPerCountry,
+			$countryCode
+		);
 	}
 
 	/**
